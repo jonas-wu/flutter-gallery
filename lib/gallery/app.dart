@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:gallery/gallery/option.dart';
 import 'package:gallery/gallery/updater.dart';
 
 class GalleryApp extends StatefulWidget {
@@ -18,13 +21,22 @@ class GalleryApp extends StatefulWidget {
   final bool enableOffscreenLayersCheckerboard;
   final VoidCallback onSendFeedback;
   final bool testMode;
-  
+
   @override
   State<StatefulWidget> createState() => _GalleryAppState();
 
 }
 
 class _GalleryAppState extends State<GalleryApp> {
+  GalleryOption _option;
+  Timer _timeDilationTimer;
+
+  _buildRoutes() {
+    return Map<String, WidgetBuilder>.fromIterable(
+
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
