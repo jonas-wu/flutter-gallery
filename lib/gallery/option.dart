@@ -197,9 +197,11 @@ class _ThemeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _BoolItem(
-      option.theme == darkGalleryTheme ? 'Dark Theme' : 'Light Theme',
+      'Dark Theme',
       option.theme == darkGalleryTheme,
-      (bool value) => option.copyWith(theme: value ? darkGalleryTheme : lightGalleryTheme),
+      (bool value) {
+        onOptionChanged(option.copyWith(theme: value ? darkGalleryTheme : lightGalleryTheme));
+      },
       switchKey: const Key('dark_theme'),
     );
   }
@@ -238,7 +240,7 @@ class _TextScaleItem extends StatelessWidget {
                 );
               }).toList();
             },
-            onSelected: (value) {
+            onSelected: (GalleryTextScaleValue value) {
               onOptionChanged(option.copyWith(textScaleFactor: value));
             },
           )
@@ -259,7 +261,7 @@ class _TextDirectionItem extends StatelessWidget {
     return _BoolItem(
       'Force RTL',
       option.textDirection == TextDirection.rtl,
-      (bool value) => option.copyWith(textDirection: value ? TextDirection.rtl : TextDirection.ltr),
+      (bool value) => onOptionChanged(option.copyWith(textDirection: value ? TextDirection.rtl : TextDirection.ltr)),
       switchKey: const Key('text_direction'),
     );
   }
@@ -276,7 +278,7 @@ class _TimeDilationItem extends StatelessWidget {
     return _BoolItem(
       'Slow motion',
       option.timeDilation != 1.0,
-      (bool value) => option.copyWith(timeDilation: value ? 20.0 : 1.0),
+      (bool value) => onOptionChanged(option.copyWith(timeDilation: value ? 20.0 : 1.0)),
       switchKey: const Key('slow_motion'),
     );
   }
